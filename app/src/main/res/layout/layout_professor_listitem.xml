@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:id="@+id/parentLayout"
+    android:layout_marginTop="5dp"
+    >
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/image"
+        android:src="@mipmap/ic_launcher"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name Surname"
+        android:layout_toRightOf="@id/image"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/textViewName"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewName"
+        android:layout_toRightOf="@id/image"
+        android:text="prostor"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/textViewWorkSpace"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/textViewWorkSpace"
+        android:layout_alignBaseline="@+id/textViewWorkSpace"
+        android:text="od do"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/textViewTime"
+        />
+
+
+
+</RelativeLayout>
