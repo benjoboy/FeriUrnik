@@ -21,14 +21,14 @@ import com.skupina1.urnik.Classes.TalkingHours;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements Filterable {
+public class ProfessorRecyclerViewAdapter extends RecyclerView.Adapter<ProfessorRecyclerViewAdapter.ViewHolder> implements Filterable {
     private static final String TAG = "RecyclerViewAdapter";
 
     private ArrayList<Professor> professors;
     private ArrayList<Professor> professorsFull;
     private Context mContext;
 
-    public RecyclerViewAdapter(ArrayList<Professor> professors, Context mContext) {
+    public ProfessorRecyclerViewAdapter(ArrayList<Professor> professors, Context mContext) {
         this.professors = professors;
         this.mContext = mContext;
         professorsFull = new ArrayList<Professor>(professors);

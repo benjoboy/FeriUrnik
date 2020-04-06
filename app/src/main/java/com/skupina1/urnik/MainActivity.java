@@ -9,6 +9,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 
 import com.google.android.material.navigation.NavigationView;
+import com.skupina1.urnik.Fragments.AgendaFragment;
 import com.skupina1.urnik.Fragments.ProfessorsFragment;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -58,6 +59,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch(menuItem.getItemId()){
             case R.id.nav_professor:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfessorsFragment()).commit();
+                break;
+            case R.id.nav_urnik:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AgendaFragment()).commit();
                 break;
             default:
                 return false;

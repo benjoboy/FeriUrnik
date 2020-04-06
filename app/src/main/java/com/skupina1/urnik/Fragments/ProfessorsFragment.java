@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.skupina1.urnik.Classes.Professor;
 import com.skupina1.urnik.Classes.TalkingHours;
 import com.skupina1.urnik.R;
-import com.skupina1.urnik.RecyclerViewAdapter;
+import com.skupina1.urnik.ProfessorRecyclerViewAdapter;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class ProfessorsFragment extends Fragment {
     //vars
     private ArrayList<Professor> professors;
     private RecyclerView recyclerView;
-    private RecyclerViewAdapter adapter;
+    private ProfessorRecyclerViewAdapter adapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class ProfessorsFragment extends Fragment {
     }
 
     private void initRecyclerView(){
-        adapter = new RecyclerViewAdapter(professors, getContext());
+        adapter = new ProfessorRecyclerViewAdapter(professors, getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
     }
