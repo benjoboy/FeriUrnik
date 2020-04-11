@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
+
 public class MyData {
     private String name;
     ArrayList<urnikSchema> list;
@@ -44,6 +45,12 @@ public class MyData {
         return sdf.format(date);
     }
 
+    public static String dateToStringDay(Date date){
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE");
+        return sdf.format(date);
+    }
+
+
     public static MyData GenerateTestTasks() {
         MyData data = new MyData("RandomName");
 
@@ -59,9 +66,42 @@ public class MyData {
         predmetSchema pred3 = new predmetSchema("SPV",sku ,izvA, izpA );
 
         data.add(new urnikSchema("RV", stringToDate("17/06/2020", "17:00"), stringToDate("17/06/2020", "18:00"), pred, izv, prostor));
-        data.add(new urnikSchema("RV", stringToDate("16/06/2020", "17:00"), stringToDate("16/06/2020", "18:00"), pred2, izv, prostor));
-        data.add(new urnikSchema("RV", stringToDate("16/06/2020", "16:00"), stringToDate("16/06/2020", "17:00"), pred2, izv, prostor));
+
+        data.add(new urnikSchema("RV", stringToDate("16/06/2020", "17:00"), stringToDate("16/06/2020", "18:00"), pred2, izv, prostor));//1
+        data.add(new urnikSchema("RV", stringToDate("16/06/2020", "17:00"), stringToDate("16/06/2020", "19:00"), pred2, izv, prostor));//0
+        data.add(new urnikSchema("RV", stringToDate("16/06/2020", "16:00"), stringToDate("16/06/2020", "19:00"), pred3, izv, prostor));
         data.add(new urnikSchema("RV", stringToDate("16/06/2020", "16:00"), stringToDate("16/06/2020", "17:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("16/06/2020", "16:00"), stringToDate("16/06/2020", "17:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("16/06/2020", "18:00"), stringToDate("16/06/2020", "21:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("16/06/2020", "15:00"), stringToDate("16/06/2020", "16:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("16/06/2020", "15:00"), stringToDate("16/06/2020", "16:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("16/06/2020", "15:00"), stringToDate("16/06/2020", "20:00"), pred3, izv, prostor));
+
+        data.add(new urnikSchema("RV", stringToDate("16/04/2020", "15:00"), stringToDate("16/04/2020", "16:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("16/04/2020", "15:00"), stringToDate("16/04/2020", "16:00"), pred3, izv, prostor));
+
+        data.add(new urnikSchema("RV", stringToDate("10/04/2020", "15:00"), stringToDate("10/04/2020", "16:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("10/04/2020", "15:00"), stringToDate("10/04/2020", "16:00"), pred3, izv, prostor));
+
+        data.add(new urnikSchema("RV", stringToDate("13/04/2020", "12:00"), stringToDate("13/04/2020", "13:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("13/04/2020", "14:00"), stringToDate("13/04/2020", "18:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("13/04/2020", "17:00"), stringToDate("13/04/2020", "18:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("13/04/2020", "17:00"), stringToDate("13/04/2020", "18:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("14/04/2020", "12:00"), stringToDate("14/04/2020", "16:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("14/04/2020", "15:00"), stringToDate("14/04/2020", "16:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("15/04/2020", "11:00"), stringToDate("13/04/2020", "12:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("16/04/2020", "13:00"), stringToDate("13/04/2020", "16:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("16/04/2020", "15:00"), stringToDate("13/04/2020", "16:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("17/04/2020", "14:00"), stringToDate("13/04/2020", "16:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("17/04/2020", "15:00"), stringToDate("13/04/2020", "16:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("17/04/2020", "12:00"), stringToDate("13/04/2020", "15:00"), pred3, izv, prostor));
+
+        data.add(new urnikSchema("RV", stringToDate("11/04/2020", "14:00"), stringToDate("11/04/2020", "16:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("PR", stringToDate("11/04/2020", "15:00"), stringToDate("11/04/2020", "16:00"), pred3, izv, prostor));
+
+        data.add(new urnikSchema("RV", stringToDate("09/04/2020", "15:00"), stringToDate("09/04/2020", "16:00"), pred3, izv, prostor));
+        data.add(new urnikSchema("RV", stringToDate("09/04/2020", "16:00"), stringToDate("09/04/2020", "18:00"), pred3, izv, prostor));
+
         data.add(new urnikSchema("RV", stringToDate("15/06/2020", "17:00"), stringToDate("15/06/2020", "18:00"), pred, izv, prostor));
         data.add(new urnikSchema("RV", stringToDate("15/06/2020", "16:00"), stringToDate("15/06/2020", "18:00"), pred3, izv, prostor));
         data.add(new urnikSchema("RV", stringToDate("15/06/2020", "16:00"), stringToDate("15/06/2020", "17:00"), pred3, izv, prostor));

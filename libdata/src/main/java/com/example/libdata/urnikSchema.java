@@ -2,7 +2,7 @@ package com.example.libdata;
 
 import java.util.Date;
 
-public class urnikSchema {
+public class urnikSchema implements Comparable<urnikSchema>{
     String tip;
     Date zacetek;
     Date konec;
@@ -17,6 +17,21 @@ public class urnikSchema {
         this.predmet = predmet;
         this.izvajalec = izvajalec;
         this.prostor = prostor;
+    }
+
+
+    @Override
+    public int compareTo(urnikSchema comp){
+        int res=getZacetek().compareTo(comp.getZacetek());
+        if(res==0){
+            res=getKonec().compareTo(comp.getKonec());
+        }
+        if(res>1){
+            res=1;
+        }else if(res<-1){
+            res=-1;
+        }
+        return res;
     }
 
     public String getTip() {

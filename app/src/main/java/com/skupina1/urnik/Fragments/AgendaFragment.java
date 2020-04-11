@@ -1,5 +1,6 @@
 package com.skupina1.urnik.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ import com.example.libdata.MyData;
 import com.example.libdata.urnikSchema;
 import com.skupina1.urnik.AdapterTasks;
 import com.skupina1.urnik.ApplicationMy;
+import com.skupina1.urnik.DayAdapter;
 import com.skupina1.urnik.R;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
@@ -42,40 +44,14 @@ public class AgendaFragment extends Fragment {
         adapter = new AdapterTasks(app.getData().getList());
         rvTask.setAdapter(adapter);
         rvTask.setLayoutManager(new LinearLayoutManager(getContext()));
+        final Context con = getContext();
         adapter.setOnItemClickListener(new AdapterTasks.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
-                Toast toast=Toast.makeText(getActivity().getApplicationContext(),"Klik " + position,Toast.LENGTH_SHORT);
-                toast.show();
-                LayoutInflater inflater = (LayoutInflater)
-                        getActivity().getSystemService(LAYOUT_INFLATER_SERVICE);
-                View popupView = inflater.inflate(R.layout.info_popup, null);
+                //Toast toast=Toast.makeText(getActivity().getApplicationContext(),"Klik " + position,Toast.LENGTH_SHORT);
+                //toast.show();
                 urnikSchema task = adapter.getMyList().get(position);
-
-                ((TextView) popupView.findViewById(R.id.nameDisplay)).setText(task.getPredmet().getNaziv());
-                ((TextView) popupView.findViewById(R.id.assistantDisplay)).setText(task.getIzvajalec().getIme());
-                ((TextView) popupView.findViewById(R.id.timeDisplay)).setText(MyData.dateToStringTime(task.getZacetek())+"-"+MyData.dateToStringTime(task.getKonec()));
-                ((TextView) popupView.findViewById(R.id.locationDisplay)).setText(task.getProstor().getNaslov());
-                ((TextView) popupView.findViewById(R.id.typeDisplay)).setText(task.getTip());
-
-
-
-                int width = ConstraintLayout.LayoutParams.WRAP_CONTENT;
-                int height = ConstraintLayout.LayoutParams.WRAP_CONTENT;
-
-                boolean focusable = true; // lets taps outside the popup also dismiss it
-                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-
-                popupWindow.showAtLocation(itemView, Gravity.CENTER, 0, 0);
-
-                popupView.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        popupWindow.dismiss();
-                        return true;
-                    }
-                });
-                //adapter.notifyDataSetChanged();
+                DayAdapter.makePopup(task, con, itemView);
             }
         });
 

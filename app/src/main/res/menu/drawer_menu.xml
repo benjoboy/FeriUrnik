@@ -7,9 +7,15 @@
         <item android:id="@+id/nav_professor"
             android:icon="@drawable/ic_person_black_24dp"
             android:title="Professor"/>
-        <item android:id="@+id/nav_urnik"
+        <item android:id="@+id/nav_agenda"
             android:icon="@drawable/ic_schedule_black_24dp"
-            android:title="Urnik"/>
+            android:title="Agenda"/>
+        <item android:id="@+id/nav_dan"
+            android:icon="@drawable/ic_schedule_black_24dp"
+            android:title="Dan"/>
+        <item android:id="@+id/nav_teden"
+            android:icon="@drawable/ic_schedule_black_24dp"
+            android:title="Teden"/>
     </group>
 
 </menu>
