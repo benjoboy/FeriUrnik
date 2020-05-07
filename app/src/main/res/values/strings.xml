@@ -13,4 +13,21 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string-array name="program_array">
+        <item>R-IT</item>
+        <item>ITK</item>
+        <item>Elektrotehnika</item>
+        <item>Telekomunikacije</item>
+        <item>Medijske komunikacije</item>
+        <item>Mehatronika</item>
+    </string-array>
+    <string-array name="smer_array">
+        <item>UN</item>
+        <item>VS</item>
+    </string-array>
+    <string-array name="letnik_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
 </resources>
