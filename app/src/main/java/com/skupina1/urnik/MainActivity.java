@@ -66,6 +66,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
+            case R.id.map:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MapFragment()).commit();
+                break;
             case R.id.nav_professor:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfessorsFragment()).commit();
                 break;
@@ -77,9 +80,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_teden:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WeekFragment()).commit();
-                break;
-            case R.id.map:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MapFragment()).commit();
                 break;
             default:
                 return false;
