@@ -23,6 +23,7 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
+        <activity android:name=".Map.MapActivity" />
     </application>
 
 </manifest>

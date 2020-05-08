@@ -1,5 +1,6 @@
 package com.skupina1.urnik;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.MenuItem;
@@ -12,14 +13,17 @@ import androidx.core.view.GravityCompat;
 import com.google.android.material.navigation.NavigationView;
 import com.skupina1.urnik.Fragments.AgendaFragment;
 import com.skupina1.urnik.Fragments.DayFragment;
+import com.skupina1.urnik.Fragments.MapFragment;
 import com.skupina1.urnik.Fragments.ProfessorsFragment;
 import com.skupina1.urnik.Fragments.WeekFragment;
+import com.skupina1.urnik.Map.MapActivity;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+
 import okhttp3.OkHttpClient;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfessorsFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_professor);
         }
@@ -52,17 +56,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }
-        else {
-        super.onBackPressed();
+        } else {
+            super.onBackPressed();
         }
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        switch(menuItem.getItemId()){
+        switch (menuItem.getItemId()) {
             case R.id.nav_professor:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfessorsFragment()).commit();
                 break;
@@ -75,6 +78,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_teden:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WeekFragment()).commit();
                 break;
+            case R.id.map:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MapFragment()).commit();
+                break;
             default:
                 return false;
         }
@@ -82,22 +88,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    public void dayUp(View v){
+    public void dayUp(View v) {
         DayFragment frag = (DayFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         frag.dayUp(v);
     }
 
-    public void dayDown(View v){
+    public void dayDown(View v) {
         DayFragment frag = (DayFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         frag.dayDown(v);
     }
 
-    public void weekUp(View v){
+    public void weekUp(View v) {
         WeekFragment frag = (WeekFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         frag.weekUp(v);
     }
 
-    public void weekDown(View v){
+    public void weekDown(View v) {
         WeekFragment frag = (WeekFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         frag.weekDown(v);
     }
