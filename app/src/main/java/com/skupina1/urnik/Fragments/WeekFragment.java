@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +15,7 @@ import com.example.libdata.MyData;
 import com.example.libdata.urnikSchema;
 import com.skupina1.urnik.ApplicationMy;
 import com.skupina1.urnik.DayAdapter;
+import com.skupina1.urnik.OnSwipeListener;
 import com.skupina1.urnik.R;
 
 import java.util.ArrayList;
@@ -78,6 +80,35 @@ public class WeekFragment extends Fragment {
         dayUp();
     }
 
+    public void weekUp(){
+        ((LinearLayout)v.findViewById(R.id.lin_lay)).removeAllViews();
+        Calendar c = Calendar.getInstance();
+        c.setTime(monday);
+        c.add(Calendar.DATE, 7);
+        monday = c.getTime();
+        displayDate = monday;
+
+        dayUp();
+        dayUp();
+        dayUp();
+        dayUp();
+        dayUp();
+    }
+
+    public void weekDown(){
+        ((LinearLayout)v.findViewById(R.id.lin_lay)).removeAllViews();
+        Calendar c = Calendar.getInstance();
+        c.setTime(monday);
+        c.add(Calendar.DATE, -7);
+        monday = c.getTime();
+        displayDate = monday;
+
+        dayUp();
+        dayUp();
+        dayUp();
+        dayUp();
+    }
+
     public void dayUp(){
         Calendar c = Calendar.getInstance();
         c.setTime(displayDate);
@@ -98,6 +129,14 @@ public class WeekFragment extends Fragment {
         app = (ApplicationMy) getActivity().getApplication();
         timetable=(ArrayList<urnikSchema>) app.getData().getList().clone();
         LinearLayout lin = (LinearLayout)v.findViewById(R.id.lin_lay);
+        ((ScrollView)v.findViewById(R.id.s_view)).setOnTouchListener(new OnSwipeListener(app) {
+            public void onSwipeRight() {
+                weekDown();
+            }
+            public void onSwipeLeft() {
+                weekUp();
+            }
+        });
         Iterator<urnikSchema> iter = timetable.iterator();
         while (iter.hasNext()) {
             urnikSchema p = iter.next();

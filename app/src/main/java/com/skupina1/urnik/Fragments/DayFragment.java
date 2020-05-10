@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +16,7 @@ import com.example.libdata.MyData;
 import com.example.libdata.urnikSchema;
 import com.skupina1.urnik.ApplicationMy;
 import com.skupina1.urnik.DayAdapter;
+import com.skupina1.urnik.OnSwipeListener;
 import com.skupina1.urnik.R;
 
 import java.util.ArrayList;
@@ -61,9 +63,37 @@ public class DayFragment extends Fragment {
         dayForDate();
     }
 
+    public void dayUp(){
+        ScrollView parent = ((ScrollView) v.findViewById(R.id.s_day));
+        parent.removeAllViews();
+        Calendar c = Calendar.getInstance();
+        c.setTime(displayDate);
+        c.add(Calendar.DATE, 1);
+        displayDate = c.getTime();
+        dayForDate();
+    }
+
+    public void dayDown(){
+        ScrollView parent = ((ScrollView) v.findViewById(R.id.s_day));
+        parent.removeAllViews();
+        Calendar c = Calendar.getInstance();
+        c.setTime(displayDate);
+        c.add(Calendar.DATE, -1);
+        displayDate = c.getTime();
+        dayForDate();
+    }
+
     private void dayForDate(){
         timetable=(ArrayList<urnikSchema>) app.getData().getList().clone();
         ScrollView parent = ((ScrollView) v.findViewById(R.id.s_day));
+        parent.setOnTouchListener(new OnSwipeListener(app) {
+            public void onSwipeRight() {
+                dayDown();
+            }
+            public void onSwipeLeft() {
+                dayUp();
+            }
+        });
         Iterator<urnikSchema> iter = timetable.iterator();
         while (iter.hasNext()) {
             urnikSchema p = iter.next();
